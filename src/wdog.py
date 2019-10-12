@@ -36,6 +36,8 @@ class EventHandler(FileSystemEventHandler):
         self.exclude_patterns = exclude_patterns
         self.verbose = verbose
 
+        self.time = time.time()
+
     def is_ignored_file(self, filename):
         """
         Returns True if filename is in excluded_files else False
@@ -96,9 +98,14 @@ class EventHandler(FileSystemEventHandler):
                 print("Skipping modified file: ", filehandle)
         else:
             if self.is_included_file(filehandle) or self.is_included_pattern(filehandle):
-                if self.verbose:
-                    print("File: {} has been modified. scheduled {} callback starting soon".format(filehandle, self.callback))
-                self.callback()
+                if time.time() - self.time < 2:
+                    pass
+                else:
+                    if self.verbose:
+                        print("File: {} has been modified. scheduled {} callback starting soon".format(filehandle, self.callback))
+
+                    self.time = time.time()
+                    self.callback()
 
         super().on_modified(event)
 
