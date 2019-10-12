@@ -15,7 +15,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     py_modules=['wdog'],
-    install_requires=['watchdog==0.8.3'],
+    install_requires=['watchdog>=0.8.3'],
     package_dir={'': 'src'},
     classifiers=[
         "Programming Language :: Python :: 3",

@@ -1,6 +1,6 @@
 # Watch Dog
 
-### __author__ = 'Dr. Abiira Nathan'
+## __author__ = Dr. Abiira Nathan
 
 A File system watch dog. Fit for monitoring and reloading a server
 configuration file.
